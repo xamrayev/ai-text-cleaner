@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AI Text Cleaner (AI Matn Tozalagich) — Word uchun nadstroyka manifesti (dasturchi rejimi, localhost).
+  Marketplace uchun manifest scripts/build.js orqali dist/ papkasiga yig'iladi
+  (barcha "https://localhost:3000" haqiqiy manzilga almashtiriladi) - README'ga qarang.
+-->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>8972fa67-08b7-4de5-8134-3742a8eaeacd</Id>
+  <Version>1.1.0.0</Version>
+  <ProviderName>Khurshidbek Khamraev</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="AI Text Cleaner">
+    <Override Locale="ru-RU" Value="AI Очиститель текста" />
+    <Override Locale="uz-Latn-UZ" Value="AI Matn Tozalagich" />
+  </DisplayName>
+  <Description DefaultValue="Removes hidden characters, curly quotes, dashes and Markdown leftovers from AI-generated text in Word without breaking formatting.">
+    <Override Locale="ru-RU" Value="Удаляет из текста от AI скрытые символы, фигурные кавычки, тире и остатки Markdown, не ломая форматирование Word." />
+    <Override Locale="uz-Latn-UZ" Value="AI chiqargan matndagi yashirin belgilar, jingalak qo'shtirnoq, tire va markdown qoldiqlarini formatlashni buzmasdan tozalaydi." />
+  </Description>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://localhost:3000/support.html" />
+  <AppDomains>
+    <AppDomain>https://localhost:3000</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="WordApi" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="Support.Url" />
+          </GetStarted>
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="AITC.Group">
+                <Label resid="Group.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+
+                <Control xsi:type="Button" id="AITC.OpenPane">
+                  <Label resid="OpenPane.Label" />
+                  <Supertip>
+                    <Title resid="OpenPane.Label" />
+                    <Description resid="OpenPane.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>AITC.Taskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="AITC.ShowTraces">
+                  <Label resid="ShowTraces.Label" />
+                  <Supertip>
+                    <Title resid="ShowTraces.Label" />
+                    <Description resid="ShowTraces.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="ShowTraces.16" />
+                    <bt:Image size="32" resid="ShowTraces.32" />
+                    <bt:Image size="80" resid="ShowTraces.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>showTraces</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="AITC.QuickClean">
+                  <Label resid="QuickClean.Label" />
+                  <Supertip>
+                    <Title resid="QuickClean.Label" />
+                    <Description resid="QuickClean.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>quickClean</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="AITC.ClearColors">
+                  <Label resid="ClearColors.Label" />
+                  <Supertip>
+                    <Title resid="ClearColors.Label" />
+                    <Description resid="ClearColors.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="ClearColors.16" />
+                    <bt:Image size="32" resid="ClearColors.32" />
+                    <bt:Image size="80" resid="ClearColors.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>clearColors</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
+        <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
+        <bt:Image id="Icon.80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+        <bt:Image id="ShowTraces.16" DefaultValue="https://localhost:3000/assets/show-16.png" />
+        <bt:Image id="ShowTraces.32" DefaultValue="https://localhost:3000/assets/show-32.png" />
+        <bt:Image id="ShowTraces.80" DefaultValue="https://localhost:3000/assets/show-80.png" />
+        <bt:Image id="ClearColors.16" DefaultValue="https://localhost:3000/assets/clear-16.png" />
+        <bt:Image id="ClearColors.32" DefaultValue="https://localhost:3000/assets/clear-32.png" />
+        <bt:Image id="ClearColors.80" DefaultValue="https://localhost:3000/assets/clear-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
+        <bt:Url id="Support.Url" DefaultValue="https://localhost:3000/support.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="AI Text Cleaner is ready">
+          <bt:Override Locale="ru-RU" Value="AI Очиститель текста готов" />
+          <bt:Override Locale="uz-Latn-UZ" Value="AI Matn Tozalagich tayyor" />
+        </bt:String>
+        <bt:String id="Group.Label" DefaultValue="AI Cleaner">
+          <bt:Override Locale="ru-RU" Value="AI Очиститель" />
+          <bt:Override Locale="uz-Latn-UZ" Value="AI Tozalagich" />
+        </bt:String>
+        <bt:String id="OpenPane.Label" DefaultValue="Cleaner">
+          <bt:Override Locale="ru-RU" Value="Очиститель" />
+          <bt:Override Locale="uz-Latn-UZ" Value="Tozalagich" />
+        </bt:String>
+        <bt:String id="QuickClean.Label" DefaultValue="Quick clean">
+          <bt:Override Locale="ru-RU" Value="Быстрая очистка" />
+          <bt:Override Locale="uz-Latn-UZ" Value="Tez tozalash" />
+        </bt:String>
+        <bt:String id="ShowTraces.Label" DefaultValue="AI traces">
+          <bt:Override Locale="ru-RU" Value="Следы AI" />
+          <bt:Override Locale="uz-Latn-UZ" Value="AI izlari" />
+        </bt:String>
+        <bt:String id="ClearColors.Label" DefaultValue="Remove colors">
+          <bt:Override Locale="ru-RU" Value="Убрать цвета" />
+          <bt:Override Locale="uz-Latn-UZ" Value="Ranglarni o'chirish" />
+        </bt:String>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Click “Cleaner” on the Home tab to get started.">
+          <bt:Override Locale="ru-RU" Value="Нажмите «Очиститель» на вкладке «Главная», чтобы начать." />
+          <bt:Override Locale="uz-Latn-UZ" Value="Bosh sahifa lentasidagi «Tozalagich» tugmasini bosing." />
+        </bt:String>
+        <bt:String id="OpenPane.Tooltip" DefaultValue="Open the cleaning panel: analysis, rules and text mode.">
+          <bt:Override Locale="ru-RU" Value="Открыть панель очистки: анализ, правила и режим текста." />
+          <bt:Override Locale="uz-Latn-UZ" Value="Tozalash panelini ochish: tahlil, qoidalar va matn rejimi." />
+        </bt:String>
+        <bt:String id="QuickClean.Tooltip" DefaultValue="Clean the selection (or the whole document) right away with your saved rules. Cleaned spots are highlighted in green.">
+          <bt:Override Locale="ru-RU" Value="Сразу очистить выделенное (или весь документ) по сохранённым правилам. Очищенные места подсвечиваются зелёным." />
+          <bt:Override Locale="uz-Latn-UZ" Value="Belgilangan qismni (yoki butun hujjatni) saqlangan sozlamalar bilan darhol tozalash. Tozalangan joylar yashil rangga bo'yaladi." />
+        </bt:String>
+        <bt:String id="ShowTraces.Tooltip" DefaultValue="Highlight spots with AI traces (hidden characters, dashes, quotes, Markdown) in yellow.">
+          <bt:Override Locale="ru-RU" Value="Подсветить жёлтым места со следами AI (скрытые символы, тире, кавычки, Markdown)." />
+          <bt:Override Locale="uz-Latn-UZ" Value="AI izlari (yashirin belgilar, tirelar, qo'shtirnoqlar, markdown) bor joylarni sariq rang bilan ko'rsatish." />
+        </bt:String>
+        <bt:String id="ClearColors.Tooltip" DefaultValue="Remove the yellow and green colors added by the add-in. Your own highlighting is restored.">
+          <bt:Override Locale="ru-RU" Value="Убрать жёлтый и зелёный цвета, добавленные надстройкой. Ваша подсветка восстанавливается." />
+          <bt:Override Locale="uz-Latn-UZ" Value="Nadstroyka qo'ygan sariq va yashil ranglarni olib tashlash. Sizning o'z bo'yoqlaringiz tiklanadi." />
+        </bt:String>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

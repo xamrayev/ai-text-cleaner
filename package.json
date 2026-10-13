@@ -1,0 +1,21 @@
+{
+  "name": "ai-matn-tozalagich",
+  "version": "1.1.0",
+  "description": "Word nadstroykasi: AI chiqargan matndagi yashirin belgilar va formatlash qoldiqlarini tozalash",
+  "private": true,
+  "scripts": {
+    "certs": "office-addin-dev-certs install",
+    "serve": "node scripts/serve.js",
+    "start": "office-addin-debugging start manifest.xml desktop --app word --dev-server \"npm run serve\" --dev-server-port 3000",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "validate": "office-addin-manifest validate manifest.xml",
+    "build": "node scripts/build.js",
+    "validate:prod": "office-addin-manifest validate dist/manifest.xml -p",
+    "test": "node test/run-tests.js"
+  },
+  "devDependencies": {
+    "office-addin-debugging": "^5.0.0",
+    "office-addin-dev-certs": "^1.12.0",
+    "office-addin-manifest": "^1.12.0"
+  }
+}

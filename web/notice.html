@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Text Cleaner</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+  <style>
+    body { min-height: 100vh; justify-content: center; }
+    .notice { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+    .notice-head { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; }
+    .notice-msg { margin: 0; font-size: 13px; }
+    .notice-msg.err { color: var(--err); }
+    .notice .btn { flex: none; align-self: flex-end; min-width: 80px; }
+  </style>
+</head>
+<body>
+  <!-- Lenta tugmalari natijasini ko'rsatadigan kichik oyna (commands.js ochadi) -->
+  <div class="notice" role="alertdialog" aria-labelledby="ttl" aria-describedby="msg">
+    <div class="notice-head"><img src="assets/icon-32.png" alt="" width="20" height="20" /><span id="ttl" data-i18n="ntTitle"></span></div>
+    <p id="msg" class="notice-msg"></p>
+    <button id="ok" class="btn primary" data-i18n="ntOk"></button>
+  </div>
+  <script src="i18n.js"></script>
+  <script>
+    (function () {
+      var q = new URLSearchParams(location.search);
+      I18N.setLang(q.get("lang") || "en", false);
+      I18N.apply(document);
+      var m = document.getElementById("msg");
+      m.textContent = q.get("msg") || "";
+      if (q.get("kind") === "err") m.className += " err";
+      function done() {
+        try { Office.context.ui.messageParent("close"); } catch (e) { window.close(); }
+      }
+      Office.onReady(function () {
+        var ok = document.getElementById("ok");
+        ok.addEventListener("click", done);
+        ok.focus();
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") done(); });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Text Cleaner</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="assets/icon-32.png" alt="" width="24" height="24" />
+      <div class="brand-text">
+        <h1 data-i18n="appName">AI Text Cleaner</h1>
+        <p data-i18n="tagline"></p>
+      </div>
+      <select id="lang" class="lang" data-i18n-title="langLabel" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+        <option value="uz">UZ</option>
+      </select>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" class="tab active" data-tab="doc" aria-selected="true" data-i18n="tabDoc"></button>
+      <button role="tab" class="tab" data-tab="text" aria-selected="false" data-i18n="tabText"></button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hujjat rejimi -->
+    <section id="tab-doc" class="panel">
+      <div class="field">
+        <span class="field-label" data-i18n="scopeLabel"></span>
+        <div class="segmented" role="radiogroup">
+          <label><input type="radio" name="scope" value="selection" checked /><span data-i18n="scopeSelection"></span></label>
+          <label><input type="radio" name="scope" value="document" /><span data-i18n="scopeDocument"></span></label>
+        </div>
+        <p class="hint" id="scope-hint" data-i18n="scopeHint"></p>
+      </div>
+
+      <div class="actions">
+        <button id="btn-show" class="btn secondary" data-i18n-title="btnShowTitle">
+          <span class="swatch mark" aria-hidden="true"></span><span data-i18n="btnShow"></span>
+        </button>
+        <button id="btn-clean" class="btn primary" data-i18n="btnClean" data-i18n-title="btnCleanTitle"></button>
+      </div>
+
+      <!-- Indikator: hujjatda rangli belgilar bor-yo'qligi va ularni o'chirish -->
+      <div id="indicator" class="indicator off">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="indicator-text"></span>
+        <button id="btn-clear" class="btn ghost" data-i18n="btnClear" disabled></button>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div id="doc-results" class="results" hidden></div>
+
+      <div id="spots" class="spots" hidden>
+        <div class="spots-head">
+          <h2 id="spots-title"></h2>
+          <div class="legend"><span class="swatch mark"></span><span data-i18n="legendTrace"></span> <span class="swatch clean"></span><span data-i18n="legendClean"></span></div>
+        </div>
+        <p class="hint" data-i18n="spotsHint"></p>
+        <ol id="spots-list"></ol>
+        <button id="btn-more" class="link" hidden></button>
+      </div>
+    </section>
+
+    <!-- Matn rejimi -->
+    <section id="tab-text" class="panel" hidden>
+      <label class="field-label" for="txt-in" data-i18n="txtIn"></label>
+      <textarea id="txt-in" rows="7" data-i18n-placeholder="txtInPlaceholder"></textarea>
+      <div class="actions">
+        <button id="btn-text-clean" class="btn primary" data-i18n="btnClean"></button>
+        <button id="btn-text-insert" class="btn secondary" data-i18n="btnInsert" disabled></button>
+      </div>
+      <label class="field-label" for="txt-out" data-i18n="txtOut"></label>
+      <textarea id="txt-out" rows="7" readonly></textarea>
+      <div class="actions">
+        <button id="btn-copy" class="btn secondary" data-i18n="btnCopy" disabled></button>
+      </div>
+      <div id="text-results" class="results" hidden></div>
+    </section>
+
+    <!-- Qoidalar (ikkala rejim uchun umumiy) -->
+    <details class="rules" open>
+      <summary data-i18n="rulesTitle"></summary>
+      <div id="rules-list"></div>
+      <div class="rules-extra" id="extra-list"></div>
+      <button id="btn-reset" class="link" data-i18n="btnReset"></button>
+    </details>
+  </main>
+
+  <footer class="foot">
+    <p data-i18n="footer"></p>
+    <p class="foot-links">
+      <a id="lnk-privacy" href="privacy.html" target="_blank" rel="noopener"></a> ·
+      <a id="lnk-terms" href="terms.html" target="_blank" rel="noopener"></a> ·
+      <a id="lnk-support" href="support.html" target="_blank" rel="noopener"></a>
+    </p>
+  </footer>
+
+  <script src="cleaner.js"></script>
+  <script src="i18n.js"></script>
+  <script src="settings.js"></script>
+  <script src="word-engine.js"></script>
+  <script src="taskpane.js"></script>
+</body>
+</html>
