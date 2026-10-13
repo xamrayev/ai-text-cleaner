@@ -301,6 +301,8 @@ const E = global.WordEngine;
       assert.ok(h.includes("{{SUPPORT_EMAIL}}"), n);
     });
     assert.ok(read("web/privacy.html").includes("AI Text Cleaner"));
+    const sup = read("web/support.html");
+    assert.strictEqual((sup.match(/href="manifest\.xml" download/g) || []).length, 3, "har tilda manifest havolasi");
   });
 
   console.log(`\n${pass} ta test o'tdi`);

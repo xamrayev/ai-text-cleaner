@@ -20,6 +20,34 @@
 
     <div class="box"><b>Contact:</b> <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a> — we usually reply within 2 business days. Please mention your Word version (Windows, Mac or Word on the web).</div>
 
+    <h2 id="install">Install in Word</h2>
+    <p><a class="dl" href="manifest.xml" download="ai-text-cleaner-manifest.xml">⬇ Download manifest.xml</a></p>
+    <p>The manifest is a small file that tells Word where the add-in lives. Download it, then follow the steps for your version of Word.</p>
+    <h3>Word on the web (Microsoft 365 in the browser)</h3>
+    <ol>
+      <li>Open any document in Word on the web.</li>
+      <li>On the <b>Home</b> tab click <b>Add-ins</b> (or <b>Insert → Add-ins</b>), then <b>More add-ins</b> / <b>Advanced</b>.</li>
+      <li>Open the <b>My Add-ins</b> tab and click <b>Upload My Add-in</b>.</li>
+      <li>Choose the downloaded <code>manifest.xml</code> and click <b>Upload</b>. The <b>AI Cleaner</b> group appears on the Home tab.</li>
+    </ol>
+    <h3>Word for Windows</h3>
+    <ol>
+      <li>Create a folder, e.g. <code>C:\Addins</code>, and copy <code>manifest.xml</code> into it.</li>
+      <li>Right-click the folder → <b>Properties → Sharing → Share…</b> → share it with yourself. Note the network path, e.g. <code>\\YOUR-PC\Addins</code>.</li>
+      <li>In Word: <b>File → Options → Trust Center → Trust Center Settings → Trusted Add-in Catalogs</b>.</li>
+      <li>Paste the network path into <b>Catalog Url</b>, click <b>Add catalog</b>, tick <b>Show in Menu</b>, then <b>OK</b>.</li>
+      <li>Restart Word. Go to <b>Insert → My Add-ins → Shared Folder</b>, select <b>AI Text Cleaner</b> and click <b>Add</b>.</li>
+    </ol>
+    <h3>Word for Mac</h3>
+    <ol>
+      <li>In Finder press <b>⇧⌘G</b> and open <code>~/Library/Containers/com.microsoft.Word/Data/Documents/</code>.</li>
+      <li>Create a folder named <code>wef</code> there (if it does not exist) and copy <code>manifest.xml</code> into it.</li>
+      <li>Restart Word. Go to <b>Insert → Add-ins → My Add-ins</b> (the arrow next to it) and choose <b>AI Text Cleaner</b>.</li>
+    </ol>
+    <h3>For a whole organization</h3>
+    <p>A Microsoft 365 administrator can deploy the add-in to everyone: <b>Microsoft 365 admin center → Settings → Integrated apps → Upload custom apps</b> → upload <code>manifest.xml</code>. It appears in all users’ Word within a few hours.</p>
+    <p class="meta">If the add-in disappears in Word on the web after clearing browser data, upload the manifest again.</p>
+
     <h2>Getting started</h2>
     <ol>
       <li>On the <b>Home</b> tab, find the <b>AI Cleaner</b> group.</li>
@@ -60,6 +88,34 @@
 
     <div class="box"><b>Связь:</b> <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a> — обычно отвечаем в течение 2 рабочих дней. Укажите, пожалуйста, вашу версию Word (Windows, Mac или Word в браузере).</div>
 
+    <h2 id="install">Установка в Word</h2>
+    <p><a class="dl" href="manifest.xml" download="ai-text-cleaner-manifest.xml">⬇ Скачать manifest.xml</a></p>
+    <p>Манифест — небольшой файл, который сообщает Word, где находится надстройка. Скачайте его и выполните шаги для вашей версии Word.</p>
+    <h3>Word в браузере (Microsoft 365 онлайн)</h3>
+    <ol>
+      <li>Откройте любой документ в Word в браузере.</li>
+      <li>На вкладке <b>Главная</b> нажмите <b>Надстройки</b> (или <b>Вставка → Надстройки</b>), затем <b>Дополнительные надстройки</b> / <b>Дополнительно</b>.</li>
+      <li>Откройте вкладку <b>Мои надстройки</b> и нажмите <b>Загрузить мою надстройку</b>.</li>
+      <li>Выберите скачанный <code>manifest.xml</code> и нажмите <b>Загрузить</b>. На вкладке «Главная» появится группа <b>AI Очиститель</b>.</li>
+    </ol>
+    <h3>Word для Windows</h3>
+    <ol>
+      <li>Создайте папку, например <code>C:\Addins</code>, и скопируйте в неё <code>manifest.xml</code>.</li>
+      <li>Правой кнопкой по папке → <b>Свойства → Доступ → Общий доступ…</b> → откройте доступ себе. Запомните сетевой путь, например <code>\\ИМЯ-ПК\Addins</code>.</li>
+      <li>В Word: <b>Файл → Параметры → Центр управления безопасностью → Параметры центра управления безопасностью → Каталоги надёжных надстроек</b>.</li>
+      <li>Вставьте сетевой путь в поле <b>URL-адрес каталога</b>, нажмите <b>Добавить каталог</b>, отметьте <b>Показывать в меню</b> и нажмите <b>ОК</b>.</li>
+      <li>Перезапустите Word. Откройте <b>Вставка → Мои надстройки → Общая папка</b>, выберите <b>AI Text Cleaner</b> и нажмите <b>Добавить</b>.</li>
+    </ol>
+    <h3>Word для Mac</h3>
+    <ol>
+      <li>В Finder нажмите <b>⇧⌘G</b> и откройте <code>~/Library/Containers/com.microsoft.Word/Data/Documents/</code>.</li>
+      <li>Создайте там папку <code>wef</code> (если её нет) и скопируйте в неё <code>manifest.xml</code>.</li>
+      <li>Перезапустите Word. Откройте <b>Вставка → Надстройки → Мои надстройки</b> (стрелка рядом) и выберите <b>AI Text Cleaner</b>.</li>
+    </ol>
+    <h3>Для всей организации</h3>
+    <p>Администратор Microsoft 365 может установить надстройку всем сотрудникам: <b>Центр администрирования Microsoft 365 → Параметры → Интегрированные приложения → Загрузить пользовательские приложения</b> → загрузить <code>manifest.xml</code>. Надстройка появится у всех в течение нескольких часов.</p>
+    <p class="meta">Если после очистки данных браузера надстройка пропала из Word в браузере, загрузите манифест снова.</p>
+
     <h2>Начало работы</h2>
     <ol>
       <li>На вкладке <b>Главная</b> найдите группу <b>AI Очиститель</b>.</li>
@@ -99,6 +155,34 @@
     <p>AI Text Cleaner (AI Matn Tozalagich) ChatGPT, Claude, Gemini va boshqa AI vositalari matnda qoldiradigan yashirin izlarni tozalaydi: ko‘rinmas belgilar, uzilmas bo‘shliqlar, jingalak qo‘shtirnoqlar, uzun tirelar va markdown belgilari (<code>*</code>, <code>#</code>). Tozalash to‘g‘ridan-to‘g‘ri Word hujjatida bajariladi, shrift, havola, jadval va rasmlar buzilmaydi.</p>
 
     <div class="box"><b>Aloqa:</b> <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a> — odatda 2 ish kuni ichida javob beramiz. Iltimos, Word versiyangizni (Windows, Mac yoki Word Online) yozing.</div>
+
+    <h2 id="install">Word’ga o‘rnatish</h2>
+    <p><a class="dl" href="manifest.xml" download="ai-text-cleaner-manifest.xml">⬇ manifest.xml ni yuklab olish</a></p>
+    <p>Manifest — Word’ga nadstroyka qayerda joylashganini aytadigan kichik fayl. Uni yuklab oling va Word versiyangiz uchun quyidagi qadamlarni bajaring. Menyu nomlari qavs ichida ruscha va inglizcha berilgan.</p>
+    <h3>Word Online (brauzerdagi Microsoft 365)</h3>
+    <ol>
+      <li>Word Online’da istalgan hujjatni oching.</li>
+      <li><b>Bosh sahifa (Главная / Home)</b> lentasida <b>Надстройки (Add-ins)</b> tugmasini bosing (yoki <b>Вставка → Надстройки</b>), so‘ng <b>Дополнительно (More add-ins / Advanced)</b>.</li>
+      <li><b>Мои надстройки (My Add-ins)</b> bo‘limini oching va <b>Загрузить мою надстройку (Upload My Add-in)</b> ni bosing.</li>
+      <li>Yuklab olingan <code>manifest.xml</code> ni tanlang va <b>Загрузить (Upload)</b> ni bosing. Bosh sahifa lentasida <b>AI Tozalagich</b> guruhi paydo bo‘ladi.</li>
+    </ol>
+    <h3>Windows uchun Word</h3>
+    <ol>
+      <li>Papka yarating, masalan <code>C:\Addins</code>, va unga <code>manifest.xml</code> ni nusxalang.</li>
+      <li>Papkani o‘ng tugma bilan bosing → <b>Свойства → Доступ → Общий доступ… (Properties → Sharing → Share…)</b> → o‘zingizga ruxsat bering. Tarmoq manzilini eslab qoling, masalan <code>\\KOMPYUTER-NOMI\Addins</code>.</li>
+      <li>Word’da: <b>Файл → Параметры → Центр управления безопасностью → Параметры центра управления безопасностью → Каталоги надёжных надстроек</b> (File → Options → Trust Center → Trust Center Settings → Trusted Add-in Catalogs).</li>
+      <li>Tarmoq manzilini <b>URL-адрес каталога (Catalog Url)</b> maydoniga qo‘ying, <b>Добавить каталог (Add catalog)</b> ni bosing, <b>Показывать в меню (Show in Menu)</b> belgisini qo‘ying va <b>ОК</b>.</li>
+      <li>Word’ni qayta oching. <b>Вставка → Мои надстройки → Общая папка (Insert → My Add-ins → Shared Folder)</b> ga kirib, <b>AI Text Cleaner</b> ni tanlang va <b>Добавить (Add)</b> ni bosing.</li>
+    </ol>
+    <h3>Mac uchun Word</h3>
+    <ol>
+      <li>Finder’da <b>⇧⌘G</b> ni bosing va <code>~/Library/Containers/com.microsoft.Word/Data/Documents/</code> ni oching.</li>
+      <li>U yerda <code>wef</code> nomli papka yarating (agar yo‘q bo‘lsa) va unga <code>manifest.xml</code> ni nusxalang.</li>
+      <li>Word’ni qayta oching. <b>Вставка → Надстройки → Мои надстройки (Insert → Add-ins → My Add-ins)</b> yonidagi strelkani bosing va <b>AI Text Cleaner</b> ni tanlang.</li>
+    </ol>
+    <h3>Butun tashkilot uchun</h3>
+    <p>Microsoft 365 administratori nadstroykani barcha xodimlarga o‘rnatishi mumkin: <b>Microsoft 365 admin center → Settings → Integrated apps → Upload custom apps</b> → <code>manifest.xml</code> ni yuklash. Bir necha soat ichida hammaning Word’ida paydo bo‘ladi.</p>
+    <p class="meta">Brauzer ma’lumotlari tozalangandan keyin Word Online’dan nadstroyka yo‘qolsa, manifestni qayta yuklang.</p>
 
     <h2>Boshlash</h2>
     <ol>

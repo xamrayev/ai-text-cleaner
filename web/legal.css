@@ -26,3 +26,6 @@ footer a { margin-right: 12px; }
 section[lang] + section[lang] { display: none; }
 .js section[lang] { display: none; }
 .js section[lang].on { display: block; }
+.dl { display: inline-block; padding: 10px 18px; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; }
+.dl:hover { filter: brightness(1.1); }
+code { overflow-wrap: anywhere; }
